@@ -28,7 +28,6 @@ footer{
 
   background-color: green;
   justify-content: space-around;
-  background-color: green;
 }
 .container a{
   color: white;

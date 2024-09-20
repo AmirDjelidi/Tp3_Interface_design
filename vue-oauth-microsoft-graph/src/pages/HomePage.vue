@@ -1,11 +1,12 @@
 <template>
   <div>
     <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
+    <img src="../assets/astro.png" alt="Astro">
   </div>
+  
 </template>
 
 <script>
-
 export default {
   name: 'HomePage',
 }
@@ -19,25 +20,30 @@ h1 {
   font-weight: 400;
   font-style: normal;
   position: absolute;
+  color: white;
+
+}
+
+img{
   animation:rotation linear 5s infinite;
 }
 
 
 @keyframes rotation {
   0% {
-    transform: translate(0, 200px) rotate(0deg);
+    transform: translate(0, 10px) rotate(0deg);
   }
   25% {
-    transform: translate(200px, 200px) rotate(90deg);
+    transform: translate(150px, 10px) rotate(90deg);
   }
   50% {
-    transform: translate(400px, 200px) rotate(180deg);
+    transform: translate(300px, 10px) rotate(180deg);
   }
   75% {
-    transform: translate(600px, 200px) rotate(270deg);
+    transform: translate(800px, 10px) rotate(270deg);
   }
   100% {
-    transform: translate(800px, 200px) rotate(360deg);
+    transform: translate(1500px, 10px) rotate(360deg);
   }
 }
 </style>
