@@ -1,14 +1,18 @@
 <template>
   <div>
     <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
-    <img src="../assets/astro.png" alt="Astro">
+    <BaseButton />
+    <img src="../assets/astro.png" alt="Astro" width="200px" height="200px" />
   </div>
-  
+
 </template>
 
 <script>
+import BaseButton from "@/components/BaseButton.vue";
+
 export default {
   name: 'HomePage',
+  components: {BaseButton},
 }
 </script>
 
