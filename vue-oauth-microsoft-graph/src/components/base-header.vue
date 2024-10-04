@@ -19,6 +19,7 @@ nav {
   display: flex;
   position: fixed;
   width: 100%;
+  height: 30px;
   left: 0;
   top: 0;
   background-color: green;

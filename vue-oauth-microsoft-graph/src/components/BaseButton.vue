@@ -1,10 +1,11 @@
-<script setup>
+<template>
+  <button class="glow-on-hover" type="button">You can click on me !</button>
+  <button :disabled=true class="glow-on-hover disabled" type="button" >You can't click on me !</button>
+</template>
+
+<script>
 
 </script>
-
-<template>
-  <button class="glow-on-hover" type="button">HOVER ME, THEN CLICK ME!</button>
-</template>
 
 <style scoped>
 
@@ -19,6 +20,13 @@
   position: relative;
   z-index: 0;
   border-radius: 10px;
+
+}
+
+.glow-on-hover.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  animation: none;
 }
 
 .glow-on-hover:before {
@@ -48,7 +56,8 @@
   animation: ease-in-out fade-in 1s;
 }
 
-.glow-on-hover:hover:before {
+
+.glow-on-hover:not(.disabled):hover:before {
   opacity: 1;
 }
 
@@ -70,8 +79,5 @@
   100% { background-position: 0 0; }
 }
 
-@keyframes fade-in{
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
+
 </style>
