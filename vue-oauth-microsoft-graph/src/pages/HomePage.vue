@@ -1,10 +1,11 @@
 <template>
-  <div>
     <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
-    <BaseButton />
-    <img src="../assets/astro.png" alt="Astro" width="200px" height="200px" />
-  </div>
-
+    <img src="../assets/otis.png" alt="otis" width="180px" height="180px" />
+    <div class="center-container">
+      <BaseButton color="primary" />
+      <BaseButton color="warn" />
+      <BaseButton color="danger" />
+    </div>
 </template>
 
 <script>
@@ -17,37 +18,37 @@ export default {
 </script>
 
 <style scoped>
-
+.center-container {
+  display: flex;
+  justify-content: center;  /* Aligner les boutons côte à côte au centre */
+  align-items: center;      /* Centrer les boutons verticalement */
+  height: 70vh;            /* Prend toute la hauteur de l'écran */
+  gap: 20px;                /* Espace de 20px entre les boutons */
+}
 h1 {
+  margin-top: 80px;
   text-align: center;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
-  position: absolute;
-  color: white;
+  align-items: center;      /* Centrer les boutons verticalement */
+
 
 }
 
 img{
+  position: absolute;
   animation:rotation linear 5s infinite;
+
 }
 
 
 @keyframes rotation {
   0% {
-    transform: translate(0, 10px) rotate(0deg);
-  }
-  25% {
-    transform: translate(150px, 10px) rotate(90deg);
-  }
-  50% {
-    transform: translate(300px, 10px) rotate(180deg);
-  }
-  75% {
-    transform: translate(800px, 10px) rotate(270deg);
+    transform: translate(-200px, 0px) rotate(0deg);
   }
   100% {
-    transform: translate(1500px, 10px) rotate(360deg);
+    transform: translate(1500px, 0px) rotate(360deg);
   }
 }
 </style>

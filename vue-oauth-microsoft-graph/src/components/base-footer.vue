@@ -8,7 +8,7 @@ export default {
 <template>
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2024 I'm Yu. Tout les droits sont louées ou achetable en bitcoin.</p>
+      <p>&copy; 2024 I'm Yu. Tout les droits sont louable ou achetable en bitcoin.</p>
       <p>
         <a href="#">Donation for a kebab</a> |
         <a href="#">The service is non-refundable under penalty of a ban on discord</a> |
