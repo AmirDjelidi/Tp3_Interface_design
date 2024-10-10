@@ -2,17 +2,17 @@
   <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
   <img src="../assets/otis.png" alt="otis" width="180px" height="180px" />
   <div class="center-container">
-
-    <BaseButton color="primary" disableOnClick>You can disable me !</BaseButton>
+    <!-- Un bouton désactivable -->
+    <BaseButton color="primary" disableOnClick>You can disable me!</BaseButton>
 
     <!-- Ces boutons ne seront pas désactivés après un clic -->
-    <BaseButton color="primary">Primary Button </BaseButton>
+    <BaseButton color="primary">Primary Button</BaseButton>
     <BaseButton color="warn">Warn Button</BaseButton>
     <BaseButton color="danger">Danger Button</BaseButton>
 
-    <!-- AsyncButton avec délai de 2 secondes -->
-    <AsyncButton color="primary">
-      If you click on me, you gonna wait 2 secs !
+    <!-- AsyncButton avec délai dynamique basé sur le nombre de clics -->
+    <AsyncButton :color="'primary'" :delay="clicks" @click="increaseClicks">
+      Cliquer pour ralentir ({{ clicks }} secondes d'attente) !
     </AsyncButton>
   </div>
 </template>
@@ -23,8 +23,18 @@ import AsyncButton from '@/components/AsyncButton.vue';
 
 export default {
   name: 'HomePage',
-  components: {BaseButton, AsyncButton},
-}
+  components: { BaseButton, AsyncButton },
+  data() {
+    return {
+      clicks: 1 // Initialise le compteur à 1
+    };
+  },
+  methods: {
+    increaseClicks() {
+      this.clicks += 1; // Incrémente le compteur à chaque clic
+    }
+  }
+};
 </script>
 
 <style scoped>

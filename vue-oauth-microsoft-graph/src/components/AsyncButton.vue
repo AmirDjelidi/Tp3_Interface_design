@@ -1,12 +1,11 @@
 <template>
   <BaseButton
       :isDisabled="isPending"
-  :color="color"
-  @click="handleClick"
+      :color="color"
+      @click="handleClick"
   >
-  <!-- Affiche le texte de chargement pendant que le bouton est désactivé -->
-  <span v-if="isPending">Loading...</span>
-  <slot v-else></slot>
+    <span v-if="isPending">Loading...</span>
+    <slot v-else></slot>
   </BaseButton>
 </template>
 
@@ -16,27 +15,36 @@ import BaseButton from './BaseButton.vue';
 export default {
   name: 'AsyncButton',
   components: { BaseButton },
-  inheritAttrs: false,  // Empêche la transmission automatique des attributs natifs
   props: {
     color: {
       type: String,
       default: 'primary'
+    },
+    delay: {
+      type: Number,
+      default: 1 // Délai par défaut de 1 seconde
     }
   },
   data() {
     return {
-      isPending: false  // État pour savoir si le bouton est en cours de chargement
+      isPending: false // Gère l'état de chargement
     };
   },
   methods: {
     handleClick() {
-      if (!this.isPending) {  // Empêche plusieurs clics pendant l'état "pending"
-        this.isPending = true;  // Désactive le bouton
+      if (!this.isPending) { // Empêche le clic si déjà en attente
+        this.isPending = true; // Active l'état de chargement
+        console.log(`Attente de ${this.delay} secondes...`);
 
-        // Simule une action asynchrone (délai de 2 secondes)
-        setTimeout(() => {
-          this.isPending = false;  // Réactive le bouton après 2 secondes
-        }, 2000);
+        // Simule une action asynchrone avec un délai variable
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, this.delay * 1000); // Utilise la prop delay pour définir le délai en millisecondes
+        }).finally(() => {
+          this.isPending = false; // Réactive le bouton après le délai
+          console.log("Chargement terminé");
+        });
       }
     }
   }
