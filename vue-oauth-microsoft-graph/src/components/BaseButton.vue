@@ -1,12 +1,12 @@
 <template>
   <button
       :disabled="isDisabled"
-      :style="buttonStyles"
-      @click="handleClick"
-      @mouseover="isHovered = true"
-      @mouseleave="isHovered = false"
+  :style="buttonStyles"
+  @click="handleClick"
+  @mouseover="isHovered = true"
+  @mouseleave="isHovered = false"
   >
-    <slot></slot>
+  <slot></slot>
   </button>
 </template>
 
@@ -21,19 +21,15 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary',
-      validator(value) {
-        return ['primary', 'warn', 'danger'].includes(value);
-      }
+      default: 'primary'
     },
-    disableOnClick: { // Nouvelle prop pour déterminer si le bouton doit être désactivé après un clic
+    isDisabled: {  // Prop pour désactiver le bouton
       type: Boolean,
-      default: false // Par défaut, les boutons ne sont pas désactivables
+      default: false
     }
   },
   data() {
     return {
-      isDisabled: false,
       isHovered: false
     };
   },
@@ -55,34 +51,10 @@ export default {
   },
   methods: {
     handleClick() {
-      // Désactive le bouton seulement si 'disableOnClick' est vrai
-      if (this.disableOnClick && !this.isDisabled) {
-        this.isDisabled = true;
+      if (!this.isDisabled) {
+        console.log("BaseButton clicked");
       }
     }
   }
 };
 </script>
-
-<style scoped>
-button {
-  border-radius: 25px;
-  width: 120px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-</style>

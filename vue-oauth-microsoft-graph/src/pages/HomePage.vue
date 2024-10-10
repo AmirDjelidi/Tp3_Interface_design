@@ -2,7 +2,7 @@
   <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
   <img src="../assets/otis.png" alt="otis" width="180px" height="180px" />
   <div class="center-container">
-    <!-- Ce bouton sera désactivé après avoir été cliqué -->
+
     <BaseButton color="primary" disableOnClick>You can disable me !</BaseButton>
 
     <!-- Ces boutons ne seront pas désactivés après un clic -->
@@ -10,17 +10,20 @@
     <BaseButton color="warn">Warn Button</BaseButton>
     <BaseButton color="danger">Danger Button</BaseButton>
 
-
+    <!-- AsyncButton avec délai de 2 secondes -->
+    <AsyncButton color="primary">
+      If you click on me, you gonna wait 2 secs !
+    </AsyncButton>
   </div>
 </template>
 
 <script>
 import BaseButton from "@/components/BaseButton.vue";
-
+import AsyncButton from '@/components/AsyncButton.vue';
 
 export default {
   name: 'HomePage',
-  components: {BaseButton,},
+  components: {BaseButton, AsyncButton},
 }
 </script>
 

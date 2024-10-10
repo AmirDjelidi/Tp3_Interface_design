@@ -1,19 +1,22 @@
 <template>
   <BaseButton
-      :disabled="isPending"
-      @click="handleClick"
+      :isDisabled="isPending"
+  :color="color"
+  @click="handleClick"
   >
-    <slot></slot>
+  <!-- Affiche le texte de chargement pendant que le bouton est désactivé -->
+  <span v-if="isPending">Loading...</span>
+  <slot v-else></slot>
   </BaseButton>
 </template>
 
 <script>
-import BaseButton from './BaseButton.vue'; // Assurez-vous d'importer BaseButton
+import BaseButton from './BaseButton.vue';
 
 export default {
-  components: {
-    BaseButton
-  },
+  name: 'AsyncButton',
+  components: { BaseButton },
+  inheritAttrs: false,  // Empêche la transmission automatique des attributs natifs
   props: {
     color: {
       type: String,
@@ -22,23 +25,19 @@ export default {
   },
   data() {
     return {
-      isPending: false // État pour suivre si une action est en cours
+      isPending: false  // État pour savoir si le bouton est en cours de chargement
     };
   },
   methods: {
-    // Méthode dédiée pour gérer le clic
     handleClick() {
-      if (this.isPending) return; // Si déjà en attente, ne rien faire
-      this.isPending = true; // Désactive le bouton
+      if (!this.isPending) {  // Empêche plusieurs clics pendant l'état "pending"
+        this.isPending = true;  // Désactive le bouton
 
-      // Simule une action asynchrone avec un délai de 2 secondes
-      new Promise((resolve) => {
+        // Simule une action asynchrone (délai de 2 secondes)
         setTimeout(() => {
-          resolve();
-        }, 2000); // Attente de 2 secondes
-      }).finally(() => {
-        this.isPending = false; // Réactive le bouton après 2 secondes
-      });
+          this.isPending = false;  // Réactive le bouton après 2 secondes
+        }, 2000);
+      }
     }
   }
 };
