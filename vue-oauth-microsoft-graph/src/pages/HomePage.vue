@@ -1,47 +1,49 @@
 <template>
-    <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
-    <img src="../assets/otis.png" alt="otis" width="180px" height="180px" />
-    <div class="center-container">
-      <BaseButton color="primary" />
-      <BaseButton color="warn" />
-      <BaseButton color="danger" />
-    </div>
+  <h1>Il n'y a pas de bonne ou de mauvaise Vue 😉</h1>
+  <img src="../assets/otis.png" alt="otis" width="180px" height="180px" />
+  <div class="center-container">
+    <!-- Ce bouton sera désactivé après avoir été cliqué -->
+    <BaseButton color="primary" disableOnClick>You can disable me !</BaseButton>
+
+    <!-- Ces boutons ne seront pas désactivés après un clic -->
+    <BaseButton color="primary">Primary Button </BaseButton>
+    <BaseButton color="warn">Warn Button</BaseButton>
+    <BaseButton color="danger">Danger Button</BaseButton>
+
+
+  </div>
 </template>
 
 <script>
 import BaseButton from "@/components/BaseButton.vue";
 
+
 export default {
   name: 'HomePage',
-  components: {BaseButton},
+  components: {BaseButton,},
 }
 </script>
 
 <style scoped>
 .center-container {
   display: flex;
-  justify-content: center;  /* Aligner les boutons côte à côte au centre */
-  align-items: center;      /* Centrer les boutons verticalement */
-  height: 70vh;            /* Prend toute la hauteur de l'écran */
-  gap: 20px;                /* Espace de 20px entre les boutons */
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  gap: 20px;
 }
+
 h1 {
   margin-top: 80px;
   text-align: center;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
-  font-style: normal;
-  align-items: center;      /* Centrer les boutons verticalement */
-
-
 }
 
-img{
+img {
   position: absolute;
-  animation:rotation linear 5s infinite;
-
+  animation: rotation linear 5s infinite;
 }
-
 
 @keyframes rotation {
   0% {
